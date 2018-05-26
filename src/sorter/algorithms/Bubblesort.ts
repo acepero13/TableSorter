@@ -1,10 +1,13 @@
 import { SortingOptions } from "../options/SortingOptions";
 import { Table } from "../table/Table";
+import { Comparator } from "../comparables/comparators/Comparator";
 
 export class Bubblesort {
+    private comparator: Comparator<any>;
     private table: Table;
-    public constructor(table: Table) {
+    public constructor(table: Table, comparator: Comparator<any>) {
         this.table = table;
+        this.comparator = comparator;
     }
 
     public sort(): any {
@@ -35,13 +38,11 @@ export class Bubblesort {
     private shouldSwitchRows(): number {
         let shouldSwitch = false, i;
         for (i = 0; i < this.table.getTotalRows() - 1; i++) {
-            const currentRow = this.table.getColumnFromRow(1, i);
-            const nextRow = this.table.getColumnFromRow(1, i + 1);
-            if (currentRow.html().toLowerCase() > nextRow.html().toLowerCase()) {
+            if (this.comparator.compare(this.table.getSortingValueForRow(i), this.table.getSortingValueForRow(i + 1))) {
                 shouldSwitch = true;
-                break;
+                return i;
             }
         }
-        return shouldSwitch ? i : -1;
+        return  -1;
     }
 }

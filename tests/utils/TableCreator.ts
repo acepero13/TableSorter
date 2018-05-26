@@ -37,7 +37,7 @@ function createTableContent(index: number, table: TableBuilder, rowSelector = "<
 }
 
 
-class TableBuilder {
+export class TableBuilder {
     private row!: JQuery<HTMLElement>;
     private table!: JQuery<HTMLElement>;
 
@@ -50,16 +50,25 @@ class TableBuilder {
     }
 
     public createRow(rowSelector = "<tr>"): TableBuilder {
+        // TODO: Make verification that only one is added at a time
         this.row = $(rowSelector);
         return this;
     }
 
-    public addColumn(content: string, columnSelector = "<td>", extraData = []): TableBuilder {
+    public addColumn(content: string, columnSelector = "<td>", extraData: { [key: string]: string; } = {}): TableBuilder {
         const column = $(columnSelector, { html: content });
+        this.addData(extraData, column);
         column.text(content);
         this.row.append(column);
         this.table.append(this.row);
         return this;
+    }
+
+    private addData(extraData: { [key: string]: string; }, column: JQuery<HTMLElement>) {
+        for (const key in extraData) {
+            const value = extraData[key];
+            column.data(key, value);
+        }
     }
 
     public appendRow(): TableBuilder {

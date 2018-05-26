@@ -1,6 +1,10 @@
 import { SortingOptions } from "../options/SortingOptions";
+import { NumberComparable } from "../comparables/Number";
+import { Comparable } from "../comparables/Comparable";
 
 export class Table {
+
+
 
     private readonly rows: JQuery<Element>;
     private readonly options: SortingOptions;
@@ -33,6 +37,17 @@ export class Table {
             throw new Error("Index out of bounds");
         }
         return column;
+    }
+
+    public getSortingColumFromRow(rowIndex: number): JQuery<Element> {
+        return this.getColumnFromRow(this.options.getColumnToSort(), rowIndex);
+    }
+
+    public getSortingValueForRow(rowIndex: number): Comparable<any> {
+        const column = this.getColumnFromRow(this.options.getColumnToSort(), rowIndex);
+        const value = column.html();
+        const valueAsInt = NumberComparable.parse(value);
+        return valueAsInt;
     }
 
     public html() {
