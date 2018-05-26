@@ -46,8 +46,7 @@ export class Table {
     public getSortingValueForRow(rowIndex: number): Comparable<any> {
         const column = this.getColumnFromRow(this.options.getColumnToSort(), rowIndex);
         const value = column.html();
-        const valueAsInt = NumberComparable.parse(value);
-        return valueAsInt;
+        return this.options.parse(value, column.data("type"));
     }
 
     public html() {

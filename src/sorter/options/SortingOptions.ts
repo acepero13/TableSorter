@@ -1,6 +1,10 @@
+import { Comparable } from "../comparables/Comparable";
+import { ColumnComparableFactory } from "../factories/ColumnComparableFactory";
+
 export class SortingOptions {
-    private columnSelector  = "";
-    private rowSelector = "" ;
+    private readonly comparableFactory: ColumnComparableFactory;
+    private columnSelector = "";
+    private rowSelector = "";
     private readonly hasHeader: boolean;
     private readonly columnToSort: number;
     private readonly direction: Direction;
@@ -14,6 +18,7 @@ export class SortingOptions {
         this.hasHeader = hasHeader;
         this.setRowSelector(rowIdentifier);
         this.setColumnSelector(columnIdentifier);
+        this.comparableFactory = new ColumnComparableFactory();
     }
 
     public getSortingDirection(): Direction {
@@ -49,6 +54,10 @@ export class SortingOptions {
         } else {
             this.rowSelector = rowSelector;
         }
+    }
+
+    public parse(value: string, dataType?: string): Comparable<any> {
+        return this.comparableFactory.parse(value, dataType);
     }
 }
 

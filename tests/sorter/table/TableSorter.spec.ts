@@ -66,19 +66,22 @@ describe("HTML With data supplied", () => {
         const options = new SortingOptions(Direction.Ascending, 0, false);
         const unsortedTableBuilder = new TableBuilder();
         const sortedTableBuilder = new TableBuilder();
-        unsortedTableBuilder
-            .createRow()
-            .addColumn("11", "<td>")
-            .appendRow()
-            .createRow()
-            .addColumn("2", "<td>")
-            .appendRow()
-            ;
 
         const dataFlags: { [key: string]: string; } = {};
         dataFlags.type = "number";
 
-            sortedTableBuilder
+        unsortedTableBuilder
+            .createRow()
+            .addColumn("11", "<td>", dataFlags)
+            .appendRow()
+            .createRow()
+            .addColumn("2", "<td>", dataFlags)
+            .appendRow()
+            ;
+
+
+
+        sortedTableBuilder
             .createRow()
             .addColumn("2", "<td>", dataFlags)
             .appendRow()
