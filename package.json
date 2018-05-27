@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register tests/**/*.spec.ts"
+    "mocha": "mocha -r ts-node/register tests/**/*.spec.ts",
+    "test": "nyc mocha --compilers ts:ts-node/register tests/**/*.spec.ts"
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +15,10 @@
     "@types/jsdom": "^11.0.4",
     "@types/mocha": "^5.2.0",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.1",
     "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
+    "nyc": "^11.8.0",
     "ts-node": "^6.0.3",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
@@ -23,5 +26,24 @@
   "dependencies": {
     "jquery": "^3.3.1",
     "systemjs": "^0.21.3"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/tests/**",
+      "**/coverage/**"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "lcov",
+      "html"
+    ],
+    "all": true,
+    "sourceMap": false
   }
 }
