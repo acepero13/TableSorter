@@ -37,12 +37,12 @@ export class Bubblesort {
 
     private shouldSwitchRows(): number {
         let shouldSwitch = false, i;
-        for (i = 0; i < this.table.getTotalRows() - 1; i++) {
+        for (i = this.table.getFirstRowIndex(); i < this.table.getTotalRows() - 1; i++) {
             if (this.comparator.compare(this.table.getSortingValueForRow(i), this.table.getSortingValueForRow(i + 1))) {
                 shouldSwitch = true;
                 return i;
             }
         }
-        return  -1;
+        return -1;
     }
 }

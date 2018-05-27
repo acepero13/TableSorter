@@ -1,19 +1,31 @@
 import { JSDOM } from "jsdom";
+import { Table } from "../../src/sorter/table/Table";
 
 const { window } = new JSDOM("<!doctype html><html><body></body></html>");
 const $ = require("jquery")(window) as JQueryStatic;
-export function createTable(container = "<table>", rowSelector = "<tr>", colSelector = "<td>"): JQuery<Element> {
+export function createTable(container = "<table>", rowSelector = "<tr>", colSelector = "<td>", header = false): JQuery<Element> {
     let table = new TableBuilder(container);
+    createHeaderIfNecessary(table, header, rowSelector, colSelector);
     for (let i = 5; i > 0; i--) {
-        table = createTableContent(i, table,  rowSelector, colSelector);
+        table = createTableContent(i, table, rowSelector, colSelector);
     }
     return table.build();
 }
 
+function createHeaderIfNecessary(table: TableBuilder, header: boolean, rowSelector: string, colSelector: string) {
+    if (header) {
+        table
+            .createRow(rowSelector)
+            .addColumn("header 1", colSelector)
+            .addColumn("header 2", colSelector);
+    }
+}
 
 
-export function createTableAsc(container = "<table>", rowSelector = "<tr>", colSelector = "<td>"): JQuery<Element> {
+
+export function createTableAsc(container = "<table>", rowSelector = "<tr>", colSelector = "<td>", header = false): JQuery<Element> {
     let table = new TableBuilder(container);
+    createHeaderIfNecessary(table, header, rowSelector, colSelector)
     for (let i = 1; i <= 5; i++) {
         table = createTableContent(i, table, rowSelector, colSelector);
     }

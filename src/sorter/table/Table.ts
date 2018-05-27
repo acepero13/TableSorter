@@ -6,6 +6,7 @@ export class Table {
 
 
 
+
     private readonly rows: JQuery<Element>;
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
@@ -39,9 +40,10 @@ export class Table {
         return column;
     }
 
-    public getSortingColumFromRow(rowIndex: number): JQuery<Element> {
-        return this.getColumnFromRow(this.options.getColumnToSort(), rowIndex);
+    public getFirstRowIndex(): number {
+        return this.options.tableHasHeader() ? 1 : 0;
     }
+
 
     public getSortingValueForRow(rowIndex: number): Comparable<any> {
         const column = this.getColumnFromRow(this.options.getColumnToSort(), rowIndex);

@@ -1,3 +1,4 @@
+import * as Bootstrap from "../../../src/sorter/Bootstrap";
 import { TableSorter } from "../../../src/sorter/table/TableSorter";
 import { expect } from "chai";
 import * as jquery from "jquery";
@@ -15,6 +16,7 @@ describe("HTML Table sorter", () => {
         const result = tableSorter.sort();
         expect(result.html()).to.be.equals(sortedTable.html());
     });
+
 
     it("should given an html table structure sort it in DESCENDING order by string without extra information", () => {
         const options = new SortingOptions(Direction.Descending, 1, false);
@@ -98,3 +100,13 @@ describe("HTML With data supplied", () => {
 });
 
 
+describe("HTML Table-Like sorter with header", () => {
+    it("should sort table wihtout header row an html table with headers", () => {
+        const options = new SortingOptions(Direction.Ascending, 1, true);
+        const unsortedTable = createTable("<table>", "<tr>", "<td>", true);
+        const tableSorter = new TableSorter(unsortedTable, options);
+        const sortedTable = createTableAsc("<table>", "<tr>", "<td>", true);
+        const result = tableSorter.sort();
+        expect(result.html()).to.be.equals(sortedTable.html());
+    });
+});
