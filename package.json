@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:dist": "tsc -p .",
     "mocha": "mocha -r ts-node/register tests/**/*.spec.ts",
     "test": "nyc mocha --compilers ts:ts-node/register tests/**/*.spec.ts"
   },
