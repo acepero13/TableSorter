@@ -1,5 +1,6 @@
 # TableSorter
 
+[![Build Status](https://travis-ci.org/acepero13/TableSorter.svg?branch=master)](https://travis-ci.org/acepero13/TableSorter)
 [![Coverage Status](https://coveralls.io/repos/github/acepero13/TableSorter/badge.svg?branch=master)](https://coveralls.io/github/acepero13/TableSorter?branch=master)
 [![codebeat badge](https://codebeat.co/badges/8ef5b06f-7385-4597-ac0d-1e2041eed013)](https://codebeat.co/projects/github-com-acepero13-tablesorter-master)
 [![BCH compliance](https://bettercodehub.com/edge/badge/acepero13/TableSorter?branch=master)](https://bettercodehub.com/)
