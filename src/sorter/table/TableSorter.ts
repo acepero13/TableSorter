@@ -8,15 +8,15 @@ import { SmallerThanComparator } from "../comparables/comparators/SmallerThanCom
 export class TableSorter {
 
     private readonly table: Table;
-    private readonly sortAlgorithm: Bubblesort;
+    private readonly sortingAlgorithm: Bubblesort;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
 
         this.table = new Table(table, options);
-        this.sortAlgorithm = new Bubblesort(this.table, this.createComparator(options));
+        this.sortingAlgorithm = new Bubblesort(this.table, this.createComparator(options));
     }
 
-    public sort(): any {
-        this.sortAlgorithm.sort();
+    public sort(): Table {
+        this.sortingAlgorithm.sort();
         return this.table;
     }
 

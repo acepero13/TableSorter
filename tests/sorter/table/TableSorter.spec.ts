@@ -90,7 +90,6 @@ describe("HTML With data supplied", () => {
             .appendRow()
             ;
 
-        console.log(unsortedTableBuilder.build().html());
         const tableSorter = new TableSorter(unsortedTableBuilder.build(), options);
         const result = tableSorter.sort();
 
