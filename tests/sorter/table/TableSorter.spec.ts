@@ -1,4 +1,3 @@
-import * as Bootstrap from "../../../src/sorter/Bootstrap";
 import { TableSorter } from "../../../src/sorter/table/TableSorter";
 import { expect } from "chai";
 import * as jquery from "jquery";
@@ -27,6 +26,7 @@ describe("HTML Table sorter", () => {
         expect(result.html()).to.be.equals(unsortedTable.html());
     });
 });
+
 
 
 describe("HTML Table-Like sorter", () => {
