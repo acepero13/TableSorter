@@ -6,7 +6,9 @@
   "scripts": {
     "build:dist": "tsc -p .",
     "mocha": "mocha -r ts-node/register tests/**/*.spec.ts",
-    "test": "nyc mocha --compilers ts:ts-node/register tests/**/*.spec.ts"
+    "test": "nyc mocha --compilers ts:ts-node/register tests/**/*.spec.ts",
+    "lint-source": "tslint src/*.ts -t verbose",
+    "lint-tests": "tslint tests/*.ts -t verbose"
   },
   "author": "",
   "license": "ISC",
