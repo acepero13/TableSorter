@@ -12,9 +12,9 @@
             "args": [
                 "-u",
                 "tdd",
-                "--require", 
-                "ts-node/register", 
-                "${workspaceFolder}/tests/**/*.spec.ts",
+                "--require",
+                "ts-node/register",
+                "${workspaceFolder}/tests/**/*.spec.ts"
             ],
             "internalConsoleOptions": "openOnSessionStart"
         },
