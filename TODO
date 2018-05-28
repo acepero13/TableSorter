@@ -1,0 +1,9 @@
+
+Todo:
+  ☐ Make DateTime comparator @high 
+  ☐ Make sort receives parameters to sort (High) @critical @today 
+  ✔ Make header support @done(18-05-28 08:56)
+  ☐ Improve loader @low 
+  ☐ Make demo with divs
+  ☐ Make HeapSort
+  ☐ Make decorators for the $12 case and €13 in the same column

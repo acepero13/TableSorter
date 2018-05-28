@@ -1,26 +1,28 @@
-import { SortingOptions } from "../options/SortingOptions";
+import { SortingOptions, Direction } from "../options/SortingOptions";
 import { Table } from "../table/Table";
 import { Comparator } from "../comparables/comparators/Comparator";
+import { TableSorter } from "../table/TableSorter";
 
 export class Bubblesort {
-    private comparator: Comparator<any>;
+    private columnToSort: number = 0;
     private table: Table;
-    public constructor(table: Table, comparator: Comparator<any>) {
+    public constructor(table: Table) {
         this.table = table;
-        this.comparator = comparator;
     }
 
-    public sort(): any {
+    public sort(direction: Direction, columnIndexToSort: number): any {
+        const comparator = TableSorter.createComparator(direction);
+        this.columnToSort = columnIndexToSort;
         let switching = true;
         while (switching) {
-            switching = this.switchRows();
+            switching = this.switchRows(comparator);
         }
         return this.table;
     }
 
-    private switchRows(): boolean {
+    private switchRows(comparator: Comparator<any>): boolean {
         let shouldSwitch = false;
-        const switchRows = this.shouldSwitchRows();
+        const switchRows = this.shouldSwitchRows(comparator);
         if (switchRows >= 0) {
             this.switchWithNextRow(switchRows);
             shouldSwitch = true;
@@ -35,10 +37,11 @@ export class Bubblesort {
         }
     }
 
-    private shouldSwitchRows(): number {
+    private shouldSwitchRows(comparator: Comparator<any>): number {
         let shouldSwitch = false, i;
         for (i = this.table.getFirstRowIndex(); i < this.table.getTotalRows() - 1; i++) {
-            if (this.comparator.compare(this.table.getSortingValueForRow(i), this.table.getSortingValueForRow(i + 1))) {
+            if (comparator.compare(this.table.getSortingValueForColInRow(this.columnToSort, i),
+                this.table.getSortingValueForColInRow(this.columnToSort, i + 1))) {
                 shouldSwitch = true;
                 return i;
             }

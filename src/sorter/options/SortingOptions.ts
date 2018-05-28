@@ -6,27 +6,11 @@ export class SortingOptions {
     private columnSelector = "";
     private rowSelector = "";
     private readonly hasHeader: boolean;
-    private readonly columnToSort: number;
-    private readonly direction: Direction;
-    public constructor(direction: Direction
-        , columnToSort: number
-        , hasHeader: boolean
-        , rowIdentifier?: string
-        , columnIdentifier?: string) {
-        this.direction = direction;
-        this.columnToSort = columnToSort;
+    public constructor(hasHeader: boolean, rowIdentifier?: string, columnIdentifier?: string) {
         this.hasHeader = hasHeader;
         this.setRowSelector(rowIdentifier);
         this.setColumnSelector(columnIdentifier);
         this.comparableFactory = new ColumnComparableFactory();
-    }
-
-    public getSortingDirection(): Direction {
-        return this.direction;
-    }
-
-    public getColumnToSort(): number {
-        return this.columnToSort;
     }
 
     public tableHasHeader(): boolean {

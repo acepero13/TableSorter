@@ -12,16 +12,16 @@ export class TableSorter {
     public constructor(table: JQuery<Element>, options: SortingOptions) {
 
         this.table = new Table(table, options);
-        this.sortingAlgorithm = new Bubblesort(this.table, this.createComparator(options));
+        this.sortingAlgorithm = new Bubblesort(this.table);
     }
 
-    public sort(): Table {
-        this.sortingAlgorithm.sort();
+    public sort(direction: Direction, columnIndexToSort: number): Table {
+        this.sortingAlgorithm.sort(direction, columnIndexToSort);
         return this.table;
     }
 
-    private createComparator(options: SortingOptions): Comparator<any> {
-        if (options.getSortingDirection() === Direction.Ascending) {
+    public static createComparator(direction: Direction): Comparator<any> {
+        if (direction === Direction.Ascending) {
             return new GreaterThanComparator();
         }
         return new SmallerThanComparator();
