@@ -3,11 +3,11 @@
  *  https://github.com/Microsoft/TypeScript/blob/master/tslint.json
 */
 {
-  "rulesDirectory": [
-    "../src"
-  ],
   "rules": {
-    "array-type": [true, "array"],
+    "array-type": [
+      true,
+      "array"
+    ],
     "arrow-return-shorthand": false,
     "await-promise": false,
     "adjacent-overload-signatures": false,
@@ -28,7 +28,8 @@
     ],
     "curly": true,
     "cyclomatic-complexity": [
-      true, 10
+      true,
+      10
     ],
     "eofline": false,
     "export-name": true,
@@ -146,7 +147,9 @@
     "no-mergeable-namespace": false,
     "no-missing-visibility-modifiers": false,
     "no-misused-new": true,
-    "no-multiline-string": [ true ],
+    "no-multiline-string": [
+      true
+    ],
     "no-multiple-var-decl": false,
     "no-namespace": false,
     "no-null-keyword": false,
@@ -204,7 +207,11 @@
       "check-whitespace"
     ],
     "one-variable-per-declaration": true,
-    "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
+    "only-arrow-functions": [
+      true,
+      "allow-declarations",
+      "allow-named-functions"
+    ],
     "ordered-imports": [
       true
     ],

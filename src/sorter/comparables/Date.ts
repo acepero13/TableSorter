@@ -1,5 +1,5 @@
+import moment from "moment";
 import { Comparable } from "./Comparable";
-import moment from 'moment';
 export class DateComparable implements Comparable<moment.Moment> {
 
     private date: moment.Moment;
@@ -9,16 +9,16 @@ export class DateComparable implements Comparable<moment.Moment> {
     public static parse(dateAsStr: string, format?: string): any {
         return new DateComparable(moment(dateAsStr, format));
     }
-    lessThan(toCompare: Comparable<moment.Moment>): boolean {
-        throw new Error("Method not implemented.");
+    public lessThan(toCompare: Comparable<moment.Moment>): boolean {
+        return this.getTimestamp() <= toCompare.getValue().valueOf();
     }
-    greaterThan(toCompare: Comparable<moment.Moment>): boolean {
-        throw new Error("Method not implemented.");
+    public greaterThan(toCompare: Comparable<moment.Moment>): boolean {
+        return this.getTimestamp() >= toCompare.getValue().valueOf();
     }
-    equals(toCompare: Comparable<moment.Moment>): boolean {
+    public equals(toCompare: Comparable<moment.Moment>): boolean {
         return this.getTimestamp() === toCompare.getValue().valueOf();
     }
-    getValue(): moment.Moment {
+    public getValue(): moment.Moment {
         return this.date;
     }
 
