@@ -1,11 +1,8 @@
-import { SortingOptions } from "../options/SortingOptions";
-import { NumberComparable } from "../comparables/Number";
 import { Comparable } from "../comparables/Comparable";
+import { NumberComparable } from "../comparables/Number";
+import { SortingOptions } from "../options/SortingOptions";
 
 export class Table {
-
-
-
 
     private readonly rows: JQuery<Element>;
     private readonly options: SortingOptions;
@@ -43,7 +40,6 @@ export class Table {
     public getFirstRowIndex(): number {
         return this.options.tableHasHeader() ? 1 : 0;
     }
-
 
     public getSortingValueForColInRow(colIndex: number, rowIndex: number): Comparable<any> {
         const column = this.getColumnFromRow(colIndex, rowIndex);

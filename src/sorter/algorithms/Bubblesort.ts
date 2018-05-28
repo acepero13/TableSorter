@@ -1,6 +1,6 @@
-import { SortingOptions, Direction } from "../options/SortingOptions";
-import { Table } from "../table/Table";
 import { Comparator } from "../comparables/comparators/Comparator";
+import { Direction, SortingOptions } from "../options/SortingOptions";
+import { Table } from "../table/Table";
 import { TableSorter } from "../table/TableSorter";
 
 export class Bubblesort {
@@ -38,7 +38,8 @@ export class Bubblesort {
     }
 
     private shouldSwitchRows(comparator: Comparator<any>): number {
-        let shouldSwitch = false, i;
+        let shouldSwitch = false;
+        let i: number;
         for (i = this.table.getFirstRowIndex(); i < this.table.getTotalRows() - 1; i++) {
             if (comparator.compare(this.table.getSortingValueForColInRow(this.columnToSort, i),
                 this.table.getSortingValueForColInRow(this.columnToSort, i + 1))) {

@@ -3,8 +3,8 @@ import { ColumnComparableFactory } from "../factories/ColumnComparableFactory";
 
 export class SortingOptions {
     private readonly comparableFactory: ColumnComparableFactory;
-    private columnSelector = "";
-    private rowSelector = "";
+    private columnSelector: string = "";
+    private rowSelector: string = "";
     private readonly hasHeader: boolean;
     public constructor(hasHeader: boolean, rowIdentifier?: string, columnIdentifier?: string) {
         this.hasHeader = hasHeader;
@@ -44,7 +44,6 @@ export class SortingOptions {
         return this.comparableFactory.parse(value, dataType);
     }
 }
-
 
 export enum Direction {
     Ascending = "asc",

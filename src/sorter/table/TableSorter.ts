@@ -1,9 +1,9 @@
-import { SortingOptions, Direction } from "../options/SortingOptions";
 import { Bubblesort } from "../algorithms/Bubblesort";
-import { Table } from "./Table";
 import { Comparator } from "../comparables/comparators/Comparator";
 import { GreaterThanComparator } from "../comparables/comparators/GreaterThanComparator";
 import { SmallerThanComparator } from "../comparables/comparators/SmallerThanComparator";
+import { Direction, SortingOptions } from "../options/SortingOptions";
+import { Table } from "./Table";
 
 export class TableSorter {
 
@@ -26,6 +26,5 @@ export class TableSorter {
         }
         return new SmallerThanComparator();
     }
-
 
 }
