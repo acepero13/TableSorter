@@ -1,7 +1,8 @@
-import { TableSorter } from "../../../src/sorter/table/TableSorter";
-import { NumberComparable } from "../../../src/sorter/comparables/Number";
+// tslint:disable-next-line:no-implicit-dependencies
 import { expect } from "chai";
+import { NumberComparable } from "../../../src/sorter/comparables/Number";
 import { StringComparable } from "../../../src/sorter/comparables/String";
+import { TableSorter } from "../../../src/sorter/table/TableSorter";
 
 describe("String comparable Equality", () => {
     it("should return true when two strings are equal", () => {
@@ -31,7 +32,6 @@ describe("String comparable Equality", () => {
 
     });
 
-
     it("should return hello is greater than world", () => {
         const hello = new StringComparable("hello");
         const world = new StringComparable("World");
@@ -39,7 +39,6 @@ describe("String comparable Equality", () => {
         expect(world.greaterThan(hello)).to.be.true;
 
     });
-
 
     it("should hello NOT be greater than world", () => {
         const hello = new StringComparable("hello");

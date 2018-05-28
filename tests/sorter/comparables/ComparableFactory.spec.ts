@@ -1,7 +1,8 @@
-import { ColumnComparableFactory } from "../../../src/sorter/factories/ColumnComparableFactory";
-import { SortingOptions, Direction } from "../../../src/sorter/options/SortingOptions";
+// tslint:disable-next-line:no-implicit-dependencies
 import { expect } from "chai";
 import { StringComparable } from "../../../src/sorter/comparables/String";
+import { ColumnComparableFactory } from "../../../src/sorter/factories/ColumnComparableFactory";
+import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
 
 describe("Comparable Factory", () => {
     it("should return number comparable when number provided", () => {

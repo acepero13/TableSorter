@@ -1,10 +1,11 @@
-import { TableSorter } from "../../../src/sorter/table/TableSorter";
+// tslint:disable-next-line:no-implicit-dependencies
 import { expect } from "chai";
 import * as jquery from "jquery";
+// tslint:disable-next-line:no-implicit-dependencies
 import { JSDOM } from "jsdom";
-import { createTable, createTableAsc, createTableDescWithDivs, createTableAscWithDivs, TableBuilder } from "../../utils/TableCreator";
 import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
-
+import { TableSorter } from "../../../src/sorter/table/TableSorter";
+import { createTable, createTableAsc, createTableAscWithDivs, createTableDescWithDivs, TableBuilder } from "../../utils/TableCreator";
 
 describe("HTML Table sorter", () => {
     it("should given an html table structure sort it by string without extra information", () => {
@@ -16,7 +17,6 @@ describe("HTML Table sorter", () => {
         expect(result.html()).to.be.equals(sortedTable.html());
     });
 
-
     it("should given an html table structure sort it in DESCENDING order by string without extra information", () => {
         const options = new SortingOptions(false);
         const unsortedTable = createTable();
@@ -26,8 +26,6 @@ describe("HTML Table sorter", () => {
         expect(result.html()).to.be.equals(unsortedTable.html());
     });
 });
-
-
 
 describe("HTML Table-Like sorter", () => {
     it("should given an html table structure represented as divs, sort it by string without extra information", () => {
@@ -39,7 +37,6 @@ describe("HTML Table-Like sorter", () => {
         expect(result.html()).to.be.equals(sortedTable.html());
     });
 });
-
 
 describe("HTML Table-Like sorter", () => {
     it("should not sort a table with lexicographic string order (11 lexicographically comes before 2)", () => {
@@ -62,7 +59,6 @@ describe("HTML Table-Like sorter", () => {
     });
 });
 
-
 describe("HTML With data supplied", () => {
     it("should  sort a table parsing the valies to integer", () => {
         const options = new SortingOptions(false);
@@ -81,8 +77,6 @@ describe("HTML With data supplied", () => {
             .appendRow()
             ;
 
-
-
         sortedTableBuilder
             .createRow()
             .addColumn("2", "<td>", dataFlags)
@@ -98,7 +92,6 @@ describe("HTML With data supplied", () => {
         expect(result.html()).to.be.equals(sortedTableBuilder.build().html());
     });
 });
-
 
 describe("HTML Table-Like sorter with header", () => {
     it("should sort table wihtout header row an html table with headers", () => {
