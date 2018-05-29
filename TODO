@@ -3,9 +3,11 @@ Todo:
   ✔ Make DateTime comparator @high @done(18-05-29 07:53)
   ✔ Make sort receives parameters to sort (High) @critical @today @done(18-05-29 07:53)
   ✔ Make header support @done(18-05-28 08:56)
-  ☐ Make selector for header explicit @critical @today  
+  ☐ Make selector for header explicit @critical @today 
+  ✔ Make money comparable @high @done(18-05-29 16:16)
+  ☐ Make Abstract class to encapsulate same behavior when comparing @low  
   ☐ Improve loader @low 
   ☐ Make demo with divs
   ☐ Make HeapSort
-  ☐ Refactor for data attributes @high @today 
+  ✔ Refactor for data attributes @high @today @done(18-05-29 16:16)
   ☐ Make decorators for the $12 case and €13 in the same column
