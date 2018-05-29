@@ -1,9 +1,11 @@
+import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever";
 import { Comparable } from "../comparables/Comparable";
 import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
 
 export class Table {
 
+    private readonly attributeRetriever: ColumnAttributeRetriever;
     private readonly rows: JQuery<Element>;
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
@@ -11,6 +13,7 @@ export class Table {
         this.table = table;
         this.options = options;
         this.rows = this.getRows();
+        this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
     }
 
     public getRows(): JQuery<Element> {
@@ -24,6 +27,7 @@ export class Table {
     public getTotalRows(): number {
         return this.getRows().length;
     }
+
     public getRow(index: number): JQuery<Element> {
         return this.getRows().eq(index);
     }
@@ -41,10 +45,14 @@ export class Table {
         return this.options.tableHasHeader() ? 1 : 0;
     }
 
-    public getSortingValueForColInRow(colIndex: number, rowIndex: number): Comparable<any> {
+    public getValueForColInRow(colIndex: number, rowIndex: number): Comparable<any> {
         const column = this.getColumnFromRow(colIndex, rowIndex);
         const value = column.html();
-        return this.options.parse(value, column.data("type"));
+        return this.options.parse(value, colIndex, rowIndex, this.attributeRetriever);
+    }
+
+    public getAttributeForColumnInRow(colIndex: number, rowIndex: number, attribute: string): string {
+        return this.attributeRetriever.getAttributeFrom(colIndex, rowIndex, attribute);
     }
 
     public html() {

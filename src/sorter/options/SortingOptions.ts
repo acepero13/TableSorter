@@ -1,3 +1,4 @@
+import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever";
 import { Comparable } from "../comparables/Comparable";
 import { ColumnComparableFactory } from "../factories/ColumnComparableFactory";
 
@@ -40,8 +41,8 @@ export class SortingOptions {
         }
     }
 
-    public parse(value: string, dataType?: string): Comparable<any> {
-        return this.comparableFactory.parse(value, dataType);
+    public parse(value: string, colIndex: number, rowIndex: number, attributeRetriever: ColumnAttributeRetriever): Comparable<any> {
+        return this.comparableFactory.parse(value, colIndex, rowIndex, attributeRetriever);
     }
 }
 
