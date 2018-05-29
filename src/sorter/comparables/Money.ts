@@ -1,23 +1,10 @@
 import accounting from "accounting";
+import { AbstractBasicComparator } from "./AbstractBasicComparator";
 import { Comparable } from "./Comparable";
 
-export class MoneyComparable implements Comparable<number> {
-
-    private readonly value: number;
-    public constructor(money: number) {
-        this.value = money;
-    }
-    public lessThan(toCompare: Comparable<number>): boolean {
-        return this.getValue() < toCompare.getValue();
-    }
-    public greaterThan(toCompare: Comparable<number>): boolean {
-        return this.getValue() > toCompare.getValue();
-    }
-    public equals(toCompare: Comparable<number>): boolean {
-        return this.getValue() === toCompare.getValue();
-    }
+export class MoneyComparable extends AbstractBasicComparator<number> {
     public getValue(): number {
-        return this.value;
+        return this.element;
     }
 
     public static parse(value: string): Comparable<number> {

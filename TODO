@@ -5,7 +5,7 @@ Todo:
   ✔ Make header support @done(18-05-28 08:56)
   ☐ Make selector for header explicit @critical @today 
   ✔ Make money comparable @high @done(18-05-29 16:16)
-  ☐ Make Abstract class to encapsulate same behavior when comparing @low  
+  ✔ Make Abstract class to encapsulate same behavior when comparing @low @done(18-05-29 18:35)
   ☐ Improve loader @low 
   ☐ Make demo with divs
   ☐ Make HeapSort
