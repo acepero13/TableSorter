@@ -7,13 +7,11 @@ import { Cell } from "./Cell";
 export class Table {
 
     private readonly attributeRetriever: ColumnAttributeRetriever;
-    private readonly rows: JQuery<Element>;
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.table = table;
         this.options = options;
-        this.rows = this.getRows();
         this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
     }
 
