@@ -5,7 +5,7 @@ import { TableSorter } from "../table/TableSorter";
 
 export class Bubblesort {
     private columnToSort: number = 0;
-    private table: Table;
+    private readonly table: Table;
     public constructor(table: Table) {
         this.table = table;
     }
@@ -41,8 +41,8 @@ export class Bubblesort {
         let shouldSwitch = false;
         let i: number;
         for (i = this.table.getFirstRowIndex(); i < this.table.getTotalRows() - 1; i++) {
-            if (comparator.compare(this.table.getValueForColInRow(this.columnToSort, i),
-                this.table.getValueForColInRow(this.columnToSort, i + 1))) {
+            if (comparator.compare(this.table.getCellValue({ columnIndex: this.columnToSort, rowIndex: i }),
+                this.table.getCellValue({ columnIndex: this.columnToSort, rowIndex: i + 1 }))) {
                 shouldSwitch = true;
                 return i;
             }

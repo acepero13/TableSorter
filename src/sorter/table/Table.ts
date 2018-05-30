@@ -2,17 +2,16 @@ import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever
 import { Comparable } from "../comparables/Comparable";
 import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
+import { Cell } from "./Cell";
 
 export class Table {
 
     private readonly attributeRetriever: ColumnAttributeRetriever;
-    private readonly rows: JQuery<Element>;
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.table = table;
         this.options = options;
-        this.rows = this.getRows();
         this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
     }
 
@@ -32,9 +31,9 @@ export class Table {
         return this.getRows().eq(index);
     }
 
-    public getColumnFromRow(columnIndex: number, rowIndex: number): JQuery<Element> {
-        const row = this.getRow(rowIndex);
-        const column = this.getColumnByIndexFrom(row, columnIndex);
+    public getCell(cell: Cell): JQuery<Element> {
+        const row = this.getRow(cell.rowIndex);
+        const column = this.getColumnByIndexFrom(row, cell.columnIndex);
         if (row.length <= 0 || column.length <= 0) {
             throw new Error("Index out of bounds");
         }
@@ -45,14 +44,14 @@ export class Table {
         return this.options.tableHasHeader() ? 1 : 0;
     }
 
-    public getValueForColInRow(colIndex: number, rowIndex: number): Comparable<any> {
-        const column = this.getColumnFromRow(colIndex, rowIndex);
+    public getCellValue(cell: Cell): Comparable<any> {
+        const column = this.getCell(cell);
         const value = column.html();
-        return this.options.parse(value, colIndex, rowIndex, this.attributeRetriever);
+        return this.options.parse(value, cell, this.attributeRetriever);
     }
 
-    public getAttributeForColumnInRow(colIndex: number, rowIndex: number, attribute: string): string {
-        return this.attributeRetriever.getAttributeFrom(colIndex, rowIndex, attribute);
+    public getCellAttribute(cell: Cell, attribute: string): string {
+        return this.attributeRetriever.getAttributeFrom(cell, attribute);
     }
 
     public html() {

@@ -49,24 +49,25 @@ describe("Table", () => {
         const unsortedTable = createTable();
         const options = new SortingOptions(false);
         const table = new Table(unsortedTable, options);
-        expect(table.getColumnFromRow(1, 0).html()).to.be.equals("5");
+        expect(table.getCell({ columnIndex: 1, rowIndex: 0 }).html()).to.be.equals("5");
     });
 
     it("should raise error when calling getColumnByIndexFrom with index out of bound", () => {
         const unsortedTable = createTable();
         const options = new SortingOptions(false);
         const table = new Table(unsortedTable, options);
-        expect(() => table.getColumnFromRow(10, 0)).to.throw("Index out of bounds");
+        expect(() => table.getCell({ columnIndex: 10, rowIndex: 0 })).to.throw("Index out of bounds");
     });
 
     it("should return none when calling getColumnByIndexFrom with index out of bound", () => {
         const unsortedTable = createTable();
         const options = new SortingOptions(false);
         const table = new Table(unsortedTable, options);
-        expect(() => table.getColumnFromRow(1, 10)).to.throw("Index out of bounds");
+        expect(() => table.getCell({ columnIndex: 1, rowIndex: 10 })).to.throw("Index out of bounds");
     });
 });
 
+const firstCell = { columnIndex: 0, rowIndex: 0 };
 describe("Get Data Attributes", () => {
     it("should return attribute type from column and no attributes on header", () => {
 
@@ -87,8 +88,8 @@ describe("Get Data Attributes", () => {
             ;
 
         const table = new Table(unsortedTableBuilder.build(), options);
-        expect(table.getAttributeForColumnInRow(0, 0, "type")).to.be.equals("date");
-        expect(table.getAttributeForColumnInRow(0, 0, "format")).to.be.equals(dataFlags.format);
+        expect(table.getCellAttribute(firstCell, "type")).to.be.equals("date");
+        expect(table.getCellAttribute(firstCell, "format")).to.be.equals(dataFlags.format);
     });
 
     it("should return none when calling asking for non-existing attribute", () => {
@@ -96,7 +97,7 @@ describe("Get Data Attributes", () => {
         const options = new SortingOptions(false);
         const table = new Table(unsortedTable, options);
         // tslint:disable-next-line:no-unused-expression
-        expect(table.getAttributeForColumnInRow(0, 0, "format")).to.be.empty;
+        expect(table.getCellAttribute(firstCell, "format")).to.be.empty;
     });
 
     it("should return attribute type defined in header column but not in regular column", () => {
@@ -120,8 +121,8 @@ describe("Get Data Attributes", () => {
             ;
 
         const table = new Table(unsortedTableBuilder.build(), options);
-        expect(table.getAttributeForColumnInRow(0, 2, "type")).to.be.equals("date");
-        expect(table.getAttributeForColumnInRow(0, 2, "format")).to.be.equals(dataFlags.format);
+        expect(table.getCellAttribute({ columnIndex: 0, rowIndex: 2 }, "type")).to.be.equals("date");
+        expect(table.getCellAttribute({columnIndex: 0, rowIndex: 2}, "format")).to.be.equals(dataFlags.format);
     });
 
 });

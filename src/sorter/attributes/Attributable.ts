@@ -1,3 +1,5 @@
+import { Cell } from "../table/Cell";
+
 export interface Attributable {
-     getAttributeFrom(columnIndex: number, rowIndex: number, attribute: string): string;
+    getAttributeFrom(cell: Cell, attribute: string): string;
 }
