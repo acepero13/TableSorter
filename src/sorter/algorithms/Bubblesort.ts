@@ -5,7 +5,7 @@ import { TableSorter } from "../table/TableSorter";
 
 export class Bubblesort {
     private columnToSort: number = 0;
-    private table: Table;
+    private readonly table: Table;
     public constructor(table: Table) {
         this.table = table;
     }

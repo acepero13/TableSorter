@@ -3,8 +3,8 @@ import { Table } from "../table/Table";
 import { Attributable } from "./Attributable";
 
 export class ColumnAttributeRetriever implements Attributable {
-    private table: Table;
-    private hasHeader: boolean;
+    private readonly table: Table;
+    private readonly hasHeader: boolean;
     public constructor(table: Table, hasHeader: boolean) {
         this.table = table;
         this.hasHeader = hasHeader;
