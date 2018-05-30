@@ -1,5 +1,4 @@
 import { Comparable } from "./Comparable";
-
 export abstract class AbstractBasicComparator<T> implements Comparable<T> {
     protected readonly element: T;
     public constructor(element: T) {
