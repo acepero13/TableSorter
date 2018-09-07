@@ -1,11 +1,12 @@
 import { Comparator } from "../comparables/comparators/Comparator";
-import { Direction, SortingOptions } from "../options/SortingOptions";
+import { Direction } from "../options/SortingOptions";
 import { Table } from "../table/Table";
 import { TableSorter } from "../table/TableSorter";
 
 export class Bubblesort {
     private columnToSort: number = 0;
     private readonly table: Table;
+
     public constructor(table: Table) {
         this.table = table;
     }
@@ -30,7 +31,7 @@ export class Bubblesort {
         return shouldSwitch;
     }
 
-    private switchWithNextRow(row: number) {
+    private switchWithNextRow(row: number): void {
         const node = this.table.getRow(row);
         if (node.parent() !== null) {
             this.table.getRow(row + 1).insertBefore(this.table.getRow(row)[0]);
@@ -38,15 +39,22 @@ export class Bubblesort {
     }
 
     private shouldSwitchRows(comparator: Comparator<any>): number {
-        let shouldSwitch = false;
-        let i: number;
-        for (i = this.table.getFirstRowIndex(); i < this.table.getTotalRows() - 1; i++) {
-            if (comparator.compare(this.table.getCellValue({ columnIndex: this.columnToSort, rowIndex: i }),
-                this.table.getCellValue({ columnIndex: this.columnToSort, rowIndex: i + 1 }))) {
-                shouldSwitch = true;
-                return i;
-            }
+        let rowIndex = this.table.getFirstRowIndex();
+        let switchRows = false;
+        while (this.alreadySorted(rowIndex, switchRows)) {
+            switchRows = this.shouldSwitch(comparator, rowIndex);
+            rowIndex++;
         }
-        return -1;
+        return (switchRows) ? rowIndex - 1 : -1;
+    }
+
+    private alreadySorted(rowIndex: number, switchRows: boolean): boolean {
+        return rowIndex < this.table.getTotalRows() - 1 && !switchRows;
+    }
+
+    private shouldSwitch(comparator: Comparator<any>, rowIndex: number): boolean {
+        const currentRow = this.table.getCellValue({ columnIndex: this.columnToSort, rowIndex: rowIndex });
+        const nextRow = this.table.getCellValue({ columnIndex: this.columnToSort, rowIndex: rowIndex + 1 });
+        return comparator.compare(currentRow, nextRow);
     }
 }
