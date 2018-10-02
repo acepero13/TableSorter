@@ -28,4 +28,14 @@ describe("HTML Table-Like sorter", () => {
         const result = tableSorter.sort(Direction.Ascending);
         expect(result.getRaw()).to.be.equals(sortedTable.html());
     });
+
+    it("should given an html table structure sort it in DESCENDING order by string without extra information", () => {
+        const options = new SortingOptions(false);
+        const unsortedTable = createTable();
+        const sortedTable = createTableAsc();
+        const table = new Table(sortedTable, options);
+        const tableSorter = new QuickSort(new DomTable(table, 1));
+        const result = tableSorter.sort(Direction.Descending);
+        expect(result.getRaw()).to.be.equals(unsortedTable.html());
+    });
 });

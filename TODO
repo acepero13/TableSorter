@@ -8,6 +8,6 @@ Todo:
   ✔ Make Abstract class to encapsulate same behavior when comparing @low @done(18-05-29 18:35)
   ☐ Improve loader @low 
   ☐ Make demo with divs
-  ☐ Make HeapSort
+  ✔ Make Quicksort
   ✔ Refactor for data attributes @high @today @done(18-05-29 16:16)
   ☐ Make decorators for the $12 case and €13 in the same column

@@ -1,10 +1,10 @@
 import { Collection } from "../collections/Collection";
+import { Comparable } from "../comparables/Comparable";
 import { Comparator } from "../comparables/comparators/Comparator";
 import { GreaterThanComparator } from "../comparables/comparators/GreaterThanComparator";
 import { SmallerThanComparator } from "../comparables/comparators/SmallerThanComparator";
 import { Direction } from "../options/SortingOptions";
 import { Sortable } from "./Sortable";
-import { Comparable } from "../comparables/Comparable";
 
 export class QuickSort implements Sortable {
     private toSort: any;
