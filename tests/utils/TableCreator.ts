@@ -5,6 +5,7 @@ import { Table } from "../../src/sorter/table/Table";
 const { window } = new JSDOM("<!doctype html><html><body></body></html>");
 // tslint:disable-next-line:no-require-imports
 // tslint:disable-next-line:no-var-requires
+// tslint:disable-next-line:no-require-imports
 const $ = require("jquery")(window) as JQueryStatic;
 
 export function createTable(container: string = "<table>",

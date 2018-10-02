@@ -4,8 +4,12 @@ import { Direction } from "../options/SortingOptions";
 export class QuickSort {
     private toSort: any;
 
-    public sort(unsorted: Collection<any>): Collection<any> {
+    public constructor(unsorted: Collection<any>) {
         this.toSort = unsorted;
+    }
+
+    public sort(): Collection<any> {
+
         this.quickSort(0, this.toSort.size() - 1);
         return this.toSort;
     }
@@ -32,7 +36,7 @@ export class QuickSort {
     }
 
     private swapWhenNecessary(j: number, pivot: any, i: number) {
-        if (this.toSort.get(j) <= pivot) {
+        if (this.toSort.get(j).lessThan(pivot)) {
             i++;
             this.toSort.swap(i, j);
         }

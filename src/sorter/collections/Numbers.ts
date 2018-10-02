@@ -1,12 +1,17 @@
+import { Comparable } from "../comparables/Comparable";
+import { NumberComparable } from "../comparables/Number";
 import { Collection } from "./Collection";
 
-export class Numbers implements Collection<number> {
+export class Numbers implements Collection<Comparable<number>> {
 
-    private array: number[];
+    private array: Comparable<number>[] = [];
     public constructor(array: number[]) {
-        this.array = array;
+        array.forEach(element => {
+            this.array.push(new NumberComparable(element));
+        });
+
     }
-    public get(index: number): number {
+    public get(index: number): Comparable<number> {
         return this.array[index];
     }
 
@@ -19,7 +24,7 @@ export class Numbers implements Collection<number> {
         this.array[dst] = tmp;
     }
 
-    public getRaw(): number[] {
+    public getRaw(): Comparable<number>[] {
         return this.array;
     }
 }

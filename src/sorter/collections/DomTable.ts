@@ -21,8 +21,8 @@ export class DomTable implements Collection<Comparable<any>> {
         const node = this.table.getRow(src);
         this.table.getRow(dst).insertBefore(this.table.getRow(src)[0]);
     }
-    public getRaw(): Comparable<any>[] {
-        throw new Error("Method not implemented.");
+    public getRaw(): any {
+        return this.table.html();
     }
 
     private cell(row: number): Cell {
