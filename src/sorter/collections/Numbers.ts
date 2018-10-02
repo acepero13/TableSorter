@@ -27,4 +27,8 @@ export class Numbers implements Collection<Comparable<number>> {
     public getRaw(): Comparable<number>[] {
         return this.array;
     }
+
+    public getFirstRowIndex(): number {
+        return 1;
+    }
 }

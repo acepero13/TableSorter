@@ -3,4 +3,5 @@ export interface Collection<T> {
     size(): number;
     swap(src: number, dst: number): void;
     getRaw(): any;
+    getFirstRowIndex(): number;
 }

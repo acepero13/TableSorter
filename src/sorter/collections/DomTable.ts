@@ -4,6 +4,7 @@ import { Table } from "../table/Table";
 import { Collection } from "./Collection";
 
 export class DomTable implements Collection<Comparable<any>> {
+
     private table: Table;
     private columnIndex: number;
 
@@ -25,7 +26,12 @@ export class DomTable implements Collection<Comparable<any>> {
         return this.table.html();
     }
 
+    public getFirstRowIndex(): number {
+        return this.table.getFirstRowIndex();
+    }
+
     private cell(row: number): Cell {
         return { rowIndex: row, columnIndex: this.columnIndex };
     }
+
 }
