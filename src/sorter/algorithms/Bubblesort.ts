@@ -33,9 +33,7 @@ export class Bubblesort {
 
     private switchWithNextRow(row: number): void {
         const node = this.table.getRow(row);
-        if (node.parent() !== null) {
-            this.table.getRow(row + 1).insertBefore(this.table.getRow(row)[0]);
-        }
+        this.table.getRow(row + 1).insertBefore(this.table.getRow(row)[0]);
     }
 
     private shouldSwitchRows(comparator: Comparator<any>): number {
