@@ -50,12 +50,17 @@ export class Table {
         return this.options.parse(value, cell, this.attributeRetriever);
     }
 
+
     public getCellAttribute(cell: Cell, attribute: string): string {
         return this.attributeRetriever.getAttributeFrom(cell, attribute);
     }
 
     public html() {
         return this.table.html();
+    }
+
+    public clone(): Table {
+        return new Table(this.table.clone(false), this.options);
     }
 
 }

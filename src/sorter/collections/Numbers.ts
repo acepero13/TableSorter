@@ -29,6 +29,6 @@ export class Numbers implements Collection<Comparable<number>> {
     }
 
     public getFirstRowIndex(): number {
-        return 1;
+        return 0;
     }
 }

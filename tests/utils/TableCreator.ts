@@ -9,10 +9,10 @@ const { window } = new JSDOM("<!doctype html><html><body></body></html>");
 const $ = require("jquery")(window) as JQueryStatic;
 
 export function createTable(container: string = "<table>",
-    rowSelector: string = "<tr>", colSelector: string = "<td>", header: boolean = false): JQuery<Element> {
+    rowSelector: string = "<tr>", colSelector: string = "<td>", header: boolean = false, max: number = 5): JQuery<Element> {
     let table = new TableBuilder(container);
     createHeaderIfNecessary(table, header, rowSelector, colSelector);
-    for (let i = 5; i > 0; i--) {
+    for (let i = max; i > 0; i--) {
         table = createTableContent(i, table, rowSelector, colSelector);
     }
     return table.build();
@@ -28,10 +28,10 @@ function createHeaderIfNecessary(table: TableBuilder, header: boolean, rowSelect
 }
 
 export function createTableAsc(container: string = "<table>",
-    rowSelector: string = "<tr>", colSelector: string = "<td>", header: boolean = false): JQuery<Element> {
+    rowSelector: string = "<tr>", colSelector: string = "<td>", header: boolean = false, max: number = 5): JQuery<Element> {
     let table = new TableBuilder(container);
     createHeaderIfNecessary(table, header, rowSelector, colSelector);
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= max; i++) {
         table = createTableContent(i, table, rowSelector, colSelector);
     }
     return table.build();
