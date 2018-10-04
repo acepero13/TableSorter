@@ -37,7 +37,7 @@ export class TableCollection implements Collection<Comparable<any>> {
         this.tableArray.forEach(row => {
             const src = row.id;
             const dst = row.order;
-            this.table.getRow(dst)[0].innerHTML = clonedTable.getRow(src)[0].innerHTML;
+            this.table.getRow(dst).replaceWith(clonedTable.getRow(src)[0]);
         });
         console.timeEnd('raw')
         return this.table.html();
@@ -57,9 +57,6 @@ export class TableCollection implements Collection<Comparable<any>> {
         const size = this.table.getTotalRows();
         console.time('prepare')
         for (let counter = 0; counter < size; counter++) {
-            const row = this.table.getRow(counter);
-            row.data("internal-id", counter);
-            row.data("order", counter);
             this.tableArray.push({ value: this.table.getCellValue(this.cell(counter)), order: counter, id: counter });
         }
         console.timeEnd('prepare');
