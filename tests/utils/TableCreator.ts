@@ -85,6 +85,7 @@ export class TableBuilder {
         for (const key in extraData) {
             const value = extraData[key];
             column.data(key, value);
+            column.attr("data-" + key, value);
         }
     }
 
