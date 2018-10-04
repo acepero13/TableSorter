@@ -31,16 +31,11 @@ export class TableCollection implements Collection<Comparable<any>> {
         this.tableArray[dst].id = tmpSrcId;
     }
     public getRaw(): any {
-        console.time('clone');
-        const clonedTable = this.table.clone();
-        console.timeEnd('clone')
-        console.time('raw');
         let html = "";
         this.tableArray.forEach(row => {
-            const dst = row.order;
-            html = "<tr>" + this.table.getRow(dst).html() + "</tr>";
+            const dst = row.id;
+            html += "<tr>" + this.table.getRow(dst).html() + "</tr>";
         });
-        console.timeEnd('raw')
         return html;
         //return this.table.html();
     }
@@ -57,11 +52,9 @@ export class TableCollection implements Collection<Comparable<any>> {
         //TODO: get first item
         //TODO: Check validity of array index
         const size = this.table.getTotalRows();
-        console.time('prepare')
         for (let counter = 0; counter < size; counter++) {
             this.tableArray.push({ value: this.table.getCellValue(this.cell(counter)), order: counter, id: counter });
         }
-        console.timeEnd('prepare');
     }
 
 }

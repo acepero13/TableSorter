@@ -16,9 +16,7 @@ export class QuickSort implements Sortable {
 
     public sort(direction: Direction): Collection<any> {
         this.comparator = this.createComparator(direction);
-        console.time('sort');
         this.quickSort(this.toSort.getFirstRowIndex(), this.toSort.size() - 1);
-        console.timeEnd('sort');
         return this.toSort;
     }
 

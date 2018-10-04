@@ -5,8 +5,8 @@ import { DomTable } from "../../../src/sorter/collections/DomTable";
 import { TableCollection } from "../../../src/sorter/collections/TableCollection";
 import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
 import { Table } from "../../../src/sorter/table/Table";
-import { createTable, createTableAsc, createTableAscWithDivs, createTableDescWithDivs, TableBuilder } from "../../utils/TableCreator";
 import { TableStructure } from "../../../src/sorter/table/TableStructure";
+import { createTable, createTableAsc, createTableAscWithDivs, createTableDescWithDivs, TableBuilder } from "../../utils/TableCreator";
 
 describe("Quick sort Table", () => {
     it("should given an html table structure sort it in DESCENDING order by string without extra information", () => {
@@ -50,7 +50,7 @@ describe("HTML Table-Like optimized sorter With 1000 entries. Algorithms compari
         const unsortedTableBuilder = new TableBuilder();
         const sortedTableBuilder = new TableBuilder();
         const dataFlags: { [key: string]: string; } = {};
-        const max = 100;
+        const max = 10;
         dataFlags.type = "number";
         for (let i = max; i > 0; i--) {
             unsortedTableBuilder
@@ -70,15 +70,10 @@ describe("HTML Table-Like optimized sorter With 1000 entries. Algorithms compari
 
                 ;
         }
-        console.time('testStartSorting')
         const table = new TableStructure(unsortedTableBuilder.build(), options);
         const tableSorter = new QuickSort(new TableCollection(table, 1));
-
         const result = tableSorter.sort(Direction.Ascending);
-        result.getRaw();
-        console.timeEnd('testStartSorting')
-        // expect(result.getRaw()).to.be.equals(sortedTableBuilder.build().html());
-        expect(true).to.be.true;
+        expect(result.getRaw()).to.be.eqls(sortedTableBuilder.build().html());
     });
 
 });

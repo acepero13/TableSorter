@@ -51,7 +51,6 @@ export class Table implements TableLike {
         return this.options.parse(value, cell, this.attributeRetriever);
     }
 
-
     public getCellAttribute(cell: Cell, attribute: string): string {
         return this.attributeRetriever.getAttributeFrom(cell, attribute);
     }

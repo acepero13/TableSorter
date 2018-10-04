@@ -28,11 +28,9 @@ export class TableStructure implements TableLike {
 
     private prepareTableStructure(): any {
         this.table.find(this.options.getRowSelector()).each((rowIndex: number, row: Element) => {
-            const jRow = $(row);
             this.tableStructure[rowIndex] = [];
-            jRow.children(this.options.getColumnSelector()).each((colIndex: number, column: Element) => {
-                const jCol = $(column);
-                this.tableStructure[rowIndex][colIndex] = jCol;
+            $(row).children(this.options.getColumnSelector()).each((colIndex: number, column: Element) => {
+                this.tableStructure[rowIndex][colIndex] = $(column);
             });
         });
     }
