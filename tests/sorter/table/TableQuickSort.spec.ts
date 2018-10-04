@@ -50,7 +50,7 @@ describe("HTML Table-Like optimized sorter With 1000 entries. Algorithms compari
         const unsortedTableBuilder = new TableBuilder();
         const sortedTableBuilder = new TableBuilder();
         const dataFlags: { [key: string]: string; } = {};
-        const max = 1000;
+        const max = 100;
         dataFlags.type = "number";
         for (let i = max; i > 0; i--) {
             unsortedTableBuilder
