@@ -1,15 +1,16 @@
 import { Comparable } from "../comparables/Comparable";
 import { Cell } from "../table/Cell";
 import { Table } from "../table/Table";
+import { TableLike } from "../table/TableLike";
 import { Collection } from "./Collection";
 
 export class TableCollection implements Collection<Comparable<any>> {
 
-    private table: Table;
+    private table: TableLike;
     private columnIndex: number;
     private tableArray: Sort[];
 
-    public constructor(table: Table, columnIndex: number) {
+    public constructor(table: TableLike, columnIndex: number) {
         this.table = table;
         this.columnIndex = columnIndex;
         this.tableArray = [];
@@ -34,13 +35,14 @@ export class TableCollection implements Collection<Comparable<any>> {
         const clonedTable = this.table.clone();
         console.timeEnd('clone')
         console.time('raw');
+        let html = "";
         this.tableArray.forEach(row => {
-            const src = row.id;
             const dst = row.order;
-            this.table.getRow(dst).replaceWith(clonedTable.getRow(src)[0]);
+            html = "<tr>" + this.table.getRow(dst).html() + "</tr>";
         });
         console.timeEnd('raw')
-        return this.table.html();
+        return html;
+        //return this.table.html();
     }
 
     public getFirstRowIndex(): number {

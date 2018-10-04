@@ -3,8 +3,9 @@ import { Comparable } from "../comparables/Comparable";
 import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
 import { Cell } from "./Cell";
+import { TableLike } from "./TableLike";
 
-export class Table {
+export class Table implements TableLike {
 
     private readonly attributeRetriever: ColumnAttributeRetriever;
     private readonly options: SortingOptions;

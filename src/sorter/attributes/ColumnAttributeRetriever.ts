@@ -1,11 +1,12 @@
 import { Cell } from "../table/Cell";
 import { Table } from "../table/Table";
+import { TableLike } from "../table/TableLike";
 import { Attributable } from "./Attributable";
 
 export class ColumnAttributeRetriever implements Attributable {
-    private readonly table: Table;
+    private readonly table: TableLike;
     private readonly hasHeader: boolean;
-    public constructor(table: Table, hasHeader: boolean) {
+    public constructor(table: TableLike, hasHeader: boolean) {
         this.table = table;
         this.hasHeader = hasHeader;
     }

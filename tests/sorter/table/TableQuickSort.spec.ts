@@ -6,6 +6,7 @@ import { TableCollection } from "../../../src/sorter/collections/TableCollection
 import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
 import { Table } from "../../../src/sorter/table/Table";
 import { createTable, createTableAsc, createTableAscWithDivs, createTableDescWithDivs, TableBuilder } from "../../utils/TableCreator";
+import { TableStructure } from "../../../src/sorter/table/TableStructure";
 
 describe("Quick sort Table", () => {
     it("should given an html table structure sort it in DESCENDING order by string without extra information", () => {
@@ -70,7 +71,7 @@ describe("HTML Table-Like optimized sorter With 1000 entries. Algorithms compari
                 ;
         }
         console.time('testStartSorting')
-        const table = new Table(unsortedTableBuilder.build(), options);
+        const table = new TableStructure(unsortedTableBuilder.build(), options);
         const tableSorter = new QuickSort(new TableCollection(table, 1));
 
         const result = tableSorter.sort(Direction.Ascending);
