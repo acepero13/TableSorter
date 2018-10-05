@@ -12,7 +12,6 @@ export class SortingOptions {
     private headerRowSelector: string = "";
     private bodySelector: string = "tbody";
 
-
     public constructor(hasHeader: boolean,
         rowIdentifier?: string,
         columnIdentifier?: string,

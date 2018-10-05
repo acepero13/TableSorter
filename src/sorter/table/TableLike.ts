@@ -16,6 +16,5 @@ export interface TableLike {
 
     html(): string;
 
-    clone(): TableLike;
     replace(sorted: string): void;
 }
