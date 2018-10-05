@@ -1,7 +1,7 @@
 import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever";
 import { Comparable } from "../comparables/Comparable";
 import { ColumnComparableFactory } from "../factories/ColumnComparableFactory";
-import { Cell } from "../table/Cell";
+import { Cell } from "../table/structure/Cell";
 
 export class SortingOptions {
     private readonly comparableFactory: ColumnComparableFactory;
@@ -10,13 +10,18 @@ export class SortingOptions {
     private readonly hasHeader: boolean;
     private headerSelector: string = "";
     private headerRowSelector: string = "";
+    private bodySelector: string = "tbody";
+
 
     public constructor(hasHeader: boolean,
         rowIdentifier?: string,
         columnIdentifier?: string,
         headerSelector?: string,
-        headerRowSelector?: string) {
+        headerRowSelector?: string,
+        bodySelector: string = "tbody"
+    ) {
         this.hasHeader = hasHeader;
+        this.bodySelector = bodySelector;
         this.setRowSelector(rowIdentifier);
         this.setColumnSelector(columnIdentifier);
         this.setHeaderSelector(headerSelector);
@@ -43,6 +48,10 @@ export class SortingOptions {
 
     public getHeaderSelector(): string {
         return this.headerSelector;
+    }
+
+    public getBodySelector(): string {
+        return this.bodySelector;
     }
 
     public parse(value: string, cell: Cell, attributeRetriever: ColumnAttributeRetriever): Comparable<any> {

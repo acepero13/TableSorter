@@ -7,19 +7,23 @@ export class Body {
 
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.options = options;
-        this.body = "";
+        this.body = table.find(this.options.getBodySelector());
         this.table = table;
     }
     public replace(body: string): void {
-        this.body.html(body);
+        return this.body.html(body);
     }
 
     public getFirstItemIndex(): number {
-
-        return this.options.tableHasHeader() ? this.getHeaderIndex() + 1 : 0;
+        return this.options.tableHasHeader() ? this.getFirstSortableRowIndex() : 0;
     }
 
-    private getHeaderIndex(): number {
-        return this.table.find(this.options.getHeaderRowSelector()).index();
+    private getFirstSortableRowIndex(): number {
+        if (this.body.length > 0) {
+            const totalRows = this.table.find(this.options.getRowSelector()).length;
+            const totalRowsInsideBody = this.body.find(this.options.getRowSelector()).length;
+            return totalRows - totalRowsInsideBody;
+        }
+        return this.table.find(this.options.getHeaderRowSelector()).index() + 1;
     }
 }

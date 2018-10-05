@@ -5,6 +5,7 @@ import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
 import { Cell } from "./structure/Cell";
 import { TableLike } from "./TableLike";
+import { Body } from "./structure/Body";
 
 const { window } = new JSDOM("<!doctype html><html><body></body></html>");
 // tslint:disable-next-line:no-require-imports
@@ -19,11 +20,13 @@ export class TableStructure implements TableLike {
     private readonly table: JQuery<Element>;
     private tableStructure: JQuery<Element>[][];
     private rows: JQuery<Element>[];
+    private readonly body: Body;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.table = table;
         this.options = options;
         this.tableStructure = [];
         this.rows = [];
+        this.body = new Body(table, options);
         this.prepareTableStructure();
         this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
     }
@@ -54,7 +57,7 @@ export class TableStructure implements TableLike {
     }
 
     public getFirstRowIndex(): number {
-        return this.options.tableHasHeader() ? 1 : 0;
+        return this.body.getFirstItemIndex();
     }
 
     public getCellValue(cell: Cell): Comparable<any> {
