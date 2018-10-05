@@ -1,6 +1,5 @@
 import { Comparable } from "../comparables/Comparable";
 import { Cell } from "../table/structure/Cell";
-import { Table } from "../table/Table";
 import { TableLike } from "../table/TableLike";
 import { Collection } from "./Collection";
 
@@ -48,10 +47,9 @@ export class TableCollection implements Collection<Comparable<any>> {
     }
 
     private prepareTable(): any {
-        //TODO: get first item
         //TODO: Check validity of array index
         const size = this.table.getTotalRows();
-        for (let counter = 0; counter < size; counter++) {
+        for (let counter = this.table.getFirstRowIndex(); counter < size; counter++) {
             this.tableArray.push({ value: this.table.getCellValue(this.cell(counter)), order: counter, id: counter });
         }
     }

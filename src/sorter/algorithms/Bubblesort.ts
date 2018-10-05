@@ -3,8 +3,6 @@ import { Comparator } from "../comparables/comparators/Comparator";
 import { GreaterThanComparator } from "../comparables/comparators/GreaterThanComparator";
 import { SmallerThanComparator } from "../comparables/comparators/SmallerThanComparator";
 import { Direction } from "../options/SortingOptions";
-import { Table } from "../table/Table";
-import { TableSorter } from "../table/TableSorter";
 import { Sortable } from "./Sortable";
 
 export class Bubblesort implements Sortable {

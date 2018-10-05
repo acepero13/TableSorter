@@ -274,7 +274,8 @@
       true,
       "parameter",
       "property-declaration",
-      "member-variable-declaration"
+      "member-variable-declaration",
+      "call-signature"
     ],
     "typedef-whitespace": [
       false
@@ -318,6 +319,7 @@
     "space-within-parens": true,
     "switch-final-break": true,
     "type-literal-delimiter": false,
-    "use-default-type-parameter": false
+    "use-default-type-parameter": false,
+    "prefer-readonly": true
   }
 }

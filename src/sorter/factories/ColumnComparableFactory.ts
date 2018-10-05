@@ -4,7 +4,6 @@ import { DateComparable } from "../comparables/Date";
 import { MoneyComparable } from "../comparables/Money";
 import { NumberComparable } from "../comparables/Number";
 import { StringComparable } from "../comparables/String";
-import { SortingOptions } from "../options/SortingOptions";
 import { Cell } from "../table/structure/Cell";
 
 export class ColumnComparableFactory {

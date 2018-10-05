@@ -11,10 +11,6 @@ export class Header {
         this.cacheHeader();
     }
 
-    public getIndex(): number {
-        return 1;
-    }
-
     public getAttribute(columnIndex: number, attribute: string): string | undefined {
         const dataset = this.header[columnIndex];
         if (dataset && dataset[attribute]) {

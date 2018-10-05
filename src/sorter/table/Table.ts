@@ -1,6 +1,5 @@
 import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever";
 import { Comparable } from "../comparables/Comparable";
-import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
 import { Body } from "./structure/Body";
 import { Cell } from "./structure/Cell";
@@ -59,7 +58,7 @@ export class Table implements TableLike {
         return this.attributeRetriever.getAttributeFrom(cell, attribute);
     }
 
-    public html() {
+    public html(): string {
         return this.table.html();
     }
 

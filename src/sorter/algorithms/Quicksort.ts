@@ -7,7 +7,7 @@ import { Direction } from "../options/SortingOptions";
 import { Sortable } from "./Sortable";
 
 export class QuickSort implements Sortable {
-    private toSort: any;
+    private toSort: Collection<any>;
     private comparator!: Comparator<any>;
 
     public constructor(unsorted: Collection<any>) {
@@ -16,7 +16,8 @@ export class QuickSort implements Sortable {
 
     public sort(direction: Direction): Collection<any> {
         this.comparator = this.createComparator(direction);
-        this.quickSort(this.toSort.getFirstRowIndex(), this.toSort.size() - 1);
+        this.quickSort(0, this.toSort.size() - 1);
+        this.toSort.getRaw();
         return this.toSort;
     }
 
@@ -40,7 +41,7 @@ export class QuickSort implements Sortable {
         this.toSort.swap(partitionIndex + 1, high);
         return partitionIndex + 1;
     }
-    private computePartitionIndex(low: number, high: number, pivot: Comparable<any>) {
+    private computePartitionIndex(low: number, high: number, pivot: Comparable<any>): number {
         let i = low - 1;
         for (let j = low; j < high; j++) {
             i = this.swapWhenNecessary(j, pivot, i);
@@ -48,11 +49,12 @@ export class QuickSort implements Sortable {
         return i;
     }
 
-    private swapWhenNecessary(j: number, pivot: Comparable<any>, i: number) {
+    private swapWhenNecessary(j: number, pivot: Comparable<any>, i: number): number {
+        let index = i;
         if (this.comparator.compare(this.toSort.get(j), pivot)) {
-            i++;
-            this.toSort.swap(i, j);
+            index++;
+            this.toSort.swap(index, j);
         }
-        return i;
+        return index;
     }
 }

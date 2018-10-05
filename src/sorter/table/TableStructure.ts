@@ -1,12 +1,11 @@
 import { JSDOM } from "jsdom";
 import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever";
 import { Comparable } from "../comparables/Comparable";
-import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
-import { Cell } from "./structure/Cell";
-import { TableLike } from "./TableLike";
 import { Body } from "./structure/Body";
+import { Cell } from "./structure/Cell";
 import { Header } from "./structure/Header";
+import { TableLike } from "./TableLike";
 
 const { window } = new JSDOM("<!doctype html><html><body></body></html>");
 // tslint:disable-next-line:no-require-imports
@@ -71,7 +70,7 @@ export class TableStructure implements TableLike {
         return this.attributeRetriever.getAttributeFrom(cell, attribute);
     }
 
-    public html() {
+    public html(): string {
         return this.table.html();
     }
 

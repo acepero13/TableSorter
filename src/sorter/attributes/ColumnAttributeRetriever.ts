@@ -1,6 +1,5 @@
 import { Cell } from "../table/structure/Cell";
 import { Header } from "../table/structure/Header";
-import { Table } from "../table/Table";
 import { TableLike } from "../table/TableLike";
 import { Attributable } from "./Attributable";
 
