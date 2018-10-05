@@ -1,5 +1,5 @@
 import { Comparable } from "../comparables/Comparable";
-import { Cell } from "./Cell";
+import { Cell } from "./structure/Cell";
 
 export interface TableLike {
     getTotalRows(): number;

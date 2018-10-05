@@ -3,7 +3,7 @@ import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever
 import { Comparable } from "../comparables/Comparable";
 import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
-import { Cell } from "./Cell";
+import { Cell } from "./structure/Cell";
 import { TableLike } from "./TableLike";
 
 const { window } = new JSDOM("<!doctype html><html><body></body></html>");

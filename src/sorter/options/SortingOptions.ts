@@ -8,11 +8,21 @@ export class SortingOptions {
     private columnSelector: string = "";
     private rowSelector: string = "";
     private readonly hasHeader: boolean;
-    public constructor(hasHeader: boolean, rowIdentifier?: string, columnIdentifier?: string) {
+    private headerSelector: string = "";
+    private headerRowSelector: string = "";
+
+    public constructor(hasHeader: boolean,
+        rowIdentifier?: string,
+        columnIdentifier?: string,
+        headerSelector?: string,
+        headerRowSelector?: string) {
         this.hasHeader = hasHeader;
         this.setRowSelector(rowIdentifier);
         this.setColumnSelector(columnIdentifier);
+        this.setHeaderSelector(headerSelector);
         this.comparableFactory = new ColumnComparableFactory();
+        this.setHeaderRowSelector(headerRowSelector);
+
     }
 
     public tableHasHeader(): boolean {
@@ -23,8 +33,20 @@ export class SortingOptions {
         return this.columnSelector;
     }
 
+    public getHeaderRowSelector(): string {
+        return this.headerRowSelector;
+    }
+
     public getRowSelector(): string {
         return this.rowSelector;
+    }
+
+    public getHeaderSelector(): string {
+        return this.headerSelector;
+    }
+
+    public parse(value: string, cell: Cell, attributeRetriever: ColumnAttributeRetriever): Comparable<any> {
+        return this.comparableFactory.parse(value, cell, attributeRetriever);
     }
 
     private setColumnSelector(columnSelector?: string): void {
@@ -34,6 +56,7 @@ export class SortingOptions {
             this.columnSelector = columnSelector;
         }
     }
+
     private setRowSelector(rowSelector?: string): void {
         if (!rowSelector) {
             this.rowSelector = "tr";
@@ -42,8 +65,20 @@ export class SortingOptions {
         }
     }
 
-    public parse(value: string, cell: Cell, attributeRetriever: ColumnAttributeRetriever): Comparable<any> {
-        return this.comparableFactory.parse(value, cell, attributeRetriever);
+    private setHeaderSelector(headerSelector?: string): void {
+        if (!headerSelector) {
+            this.headerSelector = "td";
+        } else {
+            this.headerSelector = headerSelector;
+        }
+    }
+
+    private setHeaderRowSelector(headerRowSelector?: string): void {
+        if (!headerRowSelector) {
+            this.headerRowSelector = "tr";
+        } else {
+            this.headerRowSelector = headerRowSelector;
+        }
     }
 }
 

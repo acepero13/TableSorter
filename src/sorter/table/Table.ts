@@ -2,7 +2,9 @@ import { ColumnAttributeRetriever } from "../attributes/ColumnAttributeRetriever
 import { Comparable } from "../comparables/Comparable";
 import { NumberComparable } from "../comparables/Number";
 import { SortingOptions } from "../options/SortingOptions";
-import { Cell } from "./Cell";
+import { Body } from "./structure/Body";
+import { Cell } from "./structure/Cell";
+import { Header } from "./structure/Header";
 import { TableLike } from "./TableLike";
 
 export class Table implements TableLike {
@@ -10,9 +12,13 @@ export class Table implements TableLike {
     private readonly attributeRetriever: ColumnAttributeRetriever;
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
+    private readonly header: Header;
+    private readonly body: Body;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.table = table;
         this.options = options;
+        this.header = new Header(options);
+        this.body = new Body(table, options);
         this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
     }
 
@@ -42,7 +48,7 @@ export class Table implements TableLike {
     }
 
     public getFirstRowIndex(): number {
-        return this.options.tableHasHeader() ? 1 : 0;
+        return this.body.getFirstItemIndex();
     }
 
     public getCellValue(cell: Cell): Comparable<any> {

@@ -1,4 +1,4 @@
-import { Cell } from "../table/Cell";
+import { Cell } from "../table/structure/Cell";
 import { Table } from "../table/Table";
 import { TableLike } from "../table/TableLike";
 import { Attributable } from "./Attributable";

@@ -1,5 +1,5 @@
 import { Comparable } from "../comparables/Comparable";
-import { Cell } from "../table/Cell";
+import { Cell } from "../table/structure/Cell";
 import { Table } from "../table/Table";
 import { Collection } from "./Collection";
 
