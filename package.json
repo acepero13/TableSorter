@@ -6,7 +6,7 @@
   "scripts": {
     "build:dist": "tsc -p .",
     "mocha": "mocha -r ts-node/register tests/**/*.spec.ts",
-    "test": "nyc mocha --compilers ts:ts-node/register tests/**/*.spec.ts",
+    "test": "nyc mocha  tests/**/*.spec.ts",
     "lint-source": "tslint src/*.ts -t verbose",
     "lint-tests": "tslint tests/*.ts -t verbose"
   },
@@ -21,9 +21,9 @@
     "coveralls": "^3.0.1",
     "jsdom": "^11.11.0",
     "mocha": "^5.2.0",
-    "nyc": "^11.8.0",
+    "nyc": "^13.0.1",
     "source-map-support": "^0.5.6",
-    "ts-node": "^6.0.3",
+    "ts-node": "^7.0.1",
     "tslint": "^5.10.0",
     "typescript": "^2.8.3"
   },
@@ -36,7 +36,7 @@
   },
   "nyc": {
     "include": [
-      "src/**/*.ts"
+      "src/**/**/*.ts"
     ],
     "exclude": [
       "**/node_modules/**",
