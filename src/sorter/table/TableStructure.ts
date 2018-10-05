@@ -78,4 +78,8 @@ export class TableStructure implements TableLike {
         return new TableStructure(this.table.clone(false), this.options);
     }
 
+    public replace(): void {
+        this.table.html();
+    }
+
 }

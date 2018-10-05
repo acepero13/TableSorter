@@ -66,4 +66,8 @@ export class Table implements TableLike {
         return new Table(this.table.clone(false), this.options);
     }
 
+    public replace(): void {
+        this.table.html();
+    }
+
 }
