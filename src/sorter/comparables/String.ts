@@ -1,5 +1,4 @@
 import { AbstractBasicComparator } from "./AbstractBasicComparator";
-import { Comparable } from "./Comparable";
 
 export class StringComparable extends AbstractBasicComparator<string> {
 

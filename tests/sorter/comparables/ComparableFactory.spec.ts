@@ -6,7 +6,7 @@ import { MoneyComparable } from "../../../src/sorter/comparables/Money";
 import { StringComparable } from "../../../src/sorter/comparables/String";
 import { ColumnComparableFactory } from "../../../src/sorter/factories/ColumnComparableFactory";
 import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
-import { Cell } from "../../../src/sorter/table/Cell";
+import { Cell } from "../../../src/sorter/table/structure/Cell";
 
 const firstCell = { columnIndex: 0, rowIndex: 0 };
 describe("Comparable Factory", () => {
