@@ -18,10 +18,12 @@ export class TableStructure implements TableLike {
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
     private tableStructure: JQuery<Element>[][];
+    private rows: JQuery<Element>[];
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.table = table;
         this.options = options;
         this.tableStructure = [];
+        this.rows = [];
         this.prepareTableStructure();
         this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
     }
@@ -29,6 +31,7 @@ export class TableStructure implements TableLike {
     private prepareTableStructure(): any {
         this.table.find(this.options.getRowSelector()).each((rowIndex: number, row: Element) => {
             this.tableStructure[rowIndex] = [];
+            this.rows.push($(row));
             $(row).children(this.options.getColumnSelector()).each((colIndex: number, column: Element) => {
                 this.tableStructure[rowIndex][colIndex] = $(column);
             });
@@ -47,8 +50,7 @@ export class TableStructure implements TableLike {
     }
 
     public getRow(rowIndex: number): JQuery<Element> {
-        // let a = $("<" + this.options.getRowSelector() + "/>");
-        return this.table.find(this.options.getRowSelector()).eq(rowIndex);
+        return this.rows[rowIndex];
     }
 
     public getFirstRowIndex(): number {

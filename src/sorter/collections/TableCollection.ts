@@ -31,13 +31,12 @@ export class TableCollection implements Collection<Comparable<any>> {
         this.tableArray[dst].id = tmpSrcId;
     }
     public getRaw(): any {
-        let html = "";
+        const html: any[] = [];
         this.tableArray.forEach(row => {
             const dst = row.id;
-            html += "<tr>" + this.table.getRow(dst).html() + "</tr>";
+            html.push(this.table.getRow(dst)[0].outerHTML);
         });
-        return html;
-        //return this.table.html();
+        return html.join("");
     }
 
     public getFirstRowIndex(): number {
