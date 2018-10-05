@@ -6,6 +6,7 @@ import { SortingOptions } from "../options/SortingOptions";
 import { Cell } from "./structure/Cell";
 import { TableLike } from "./TableLike";
 import { Body } from "./structure/Body";
+import { Header } from "./structure/Header";
 
 const { window } = new JSDOM("<!doctype html><html><body></body></html>");
 // tslint:disable-next-line:no-require-imports
@@ -28,7 +29,7 @@ export class TableStructure implements TableLike {
         this.rows = [];
         this.body = new Body(table, options);
         this.prepareTableStructure();
-        this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
+        this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader(), new Header(table, options));
     }
 
     private prepareTableStructure(): any {

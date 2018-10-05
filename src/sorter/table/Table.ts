@@ -12,14 +12,12 @@ export class Table implements TableLike {
     private readonly attributeRetriever: ColumnAttributeRetriever;
     private readonly options: SortingOptions;
     private readonly table: JQuery<Element>;
-    private readonly header: Header;
     private readonly body: Body;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.table = table;
         this.options = options;
-        this.header = new Header(options);
         this.body = new Body(table, options);
-        this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader());
+        this.attributeRetriever = new ColumnAttributeRetriever(this, options.tableHasHeader(), new Header(table, options));
     }
 
     public getRows(): JQuery<Element> {

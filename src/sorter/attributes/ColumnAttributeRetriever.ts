@@ -1,4 +1,5 @@
 import { Cell } from "../table/structure/Cell";
+import { Header } from "../table/structure/Header";
 import { Table } from "../table/Table";
 import { TableLike } from "../table/TableLike";
 import { Attributable } from "./Attributable";
@@ -6,9 +7,11 @@ import { Attributable } from "./Attributable";
 export class ColumnAttributeRetriever implements Attributable {
     private readonly table: TableLike;
     private readonly hasHeader: boolean;
-    public constructor(table: TableLike, hasHeader: boolean) {
+    private header: Header;
+    public constructor(table: TableLike, hasHeader: boolean, header: Header) {
         this.table = table;
         this.hasHeader = hasHeader;
+        this.header = header;
     }
 
     public getAttributeFrom(cell: Cell, attribute: string): string {
@@ -21,8 +24,8 @@ export class ColumnAttributeRetriever implements Attributable {
     }
 
     private getAttributeFromHeader(columnIndex: number, attribute: string): string {
-        const headerColumn = this.table.getCell({ columnIndex: columnIndex, rowIndex: 0 });
-        return headerColumn.data(attribute);
+        const attr = this.header.getAttribute(columnIndex, attribute);
+        return attr !== undefined ? attr : "";
     }
 
     private valueDoesNotExistsAndHasHeaderToGetValueFrom(value: string): boolean {
