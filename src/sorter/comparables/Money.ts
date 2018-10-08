@@ -7,7 +7,7 @@ export class MoneyComparable extends AbstractBasicComparator<number> {
         return this.element;
     }
 
-    public static parse(value: string): Comparable<number> {
-        return new MoneyComparable(accounting.unformat(value));
+    public static parse(value: string, format?: string): Comparable<number> {
+        return new MoneyComparable(accounting.unformat(value, format));
     }
 }

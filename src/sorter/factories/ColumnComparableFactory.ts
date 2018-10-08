@@ -20,7 +20,8 @@ export class ColumnComparableFactory {
                 comparable = DateComparable.parse(value, format);
                 break;
             case "money":
-                comparable = MoneyComparable.parse(value);
+                const decimal = attributeRetriever.getAttributeFrom(cell, "decimal");
+                comparable = MoneyComparable.parse(value, decimal);
                 break;
             default:
                 comparable = new StringComparable(value);

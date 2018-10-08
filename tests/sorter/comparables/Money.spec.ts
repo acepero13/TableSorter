@@ -51,6 +51,13 @@ describe("Money SmallerThan", () => {
         expect(eur50.lessThan(eur100)).to.be.true;
     });
 
+    it("should 800 euros be smaller than 1200 euros", () => {
+        const eur800 = MoneyComparable.parse("800,00 EUR", ",");
+        const eur1200 = MoneyComparable.parse("1.200,00 EUR", ",");
+        // tslint:disable-next-line:no-unused-expression
+        expect(eur800.lessThan(eur1200)).to.be.true;
+    });
+
     it("should 50 euros NOT be smaller than 100 euros", () => {
         const eur100 = MoneyComparable.parse("100 EUR");
         const eur50 = MoneyComparable.parse("50 EUR");
@@ -80,5 +87,4 @@ describe("Money Equality", () => {
         // tslint:disable-next-line:no-unused-expression
         expect(eur50.equals(eur100)).to.be.false;
     });
-
 });
