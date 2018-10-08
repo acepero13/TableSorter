@@ -16,12 +16,16 @@ export class ColumnComparableFactory {
                 comparable = NumberComparable.parse(value);
                 break;
             case "date":
-                const format = attributeRetriever.getAttributeFrom(cell, "format");
-                comparable = DateComparable.parse(value, format);
+                comparable = DateComparable.parse(
+                    value,
+                    attributeRetriever.getAttributeFrom(cell, "format")
+                );
                 break;
             case "money":
-                const decimal = attributeRetriever.getAttributeFrom(cell, "decimal");
-                comparable = MoneyComparable.parse(value, decimal);
+                comparable = MoneyComparable.parse(
+                    value,
+                    attributeRetriever.getAttributeFrom(cell, "decimal")
+                );
                 break;
             default:
                 comparable = new StringComparable(value);
