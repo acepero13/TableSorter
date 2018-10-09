@@ -29,10 +29,10 @@ export class QuickSort implements Sortable {
     }
 
     private quickSort(low: number, high: number): void {
-        if (low < high) {
+        while (low < high) {
             const partitionIndex = this.partition(low, high);
             this.quickSort(low, partitionIndex - 1);
-            this.quickSort(partitionIndex + 1, high);
+            low = partitionIndex + 1;
         }
     }
     private partition(low: number, high: number): any {
