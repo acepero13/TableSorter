@@ -2,7 +2,7 @@
 import { expect } from "chai";
 import { QuickSort } from "../../../src/sorter/algorithms/Quicksort";
 import { DomTable } from "../../../src/sorter/collections/DomTable";
-import { TableCollection } from "../../../src/sorter/collections/TableCollection";
+import { TableColumnCollection } from "../../../src/sorter/collections/TableColumnCollection";
 import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
 import { Table } from "../../../src/sorter/table/Table";
 import { TableStructure } from "../../../src/sorter/table/TableStructure";
@@ -71,7 +71,7 @@ describe("HTML Table-Like optimized sorter With 1000 entries. Algorithms compari
                 ;
         }
         const table = new TableStructure(unsortedTableBuilder.build(), options);
-        const collection = new TableCollection(table, 1);
+        const collection = new TableColumnCollection(table, 1);
         const tableSorter = new QuickSort(collection);
         const result = tableSorter.sort(Direction.Ascending);
         expect(result.getRaw()).to.be.eqls(sortedTableBuilder.build().html());

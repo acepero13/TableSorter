@@ -2,7 +2,7 @@ import { Bubblesort } from "../algorithms/Bubblesort";
 import { QuickSort } from "../algorithms/Quicksort";
 import { Sortable } from "../algorithms/Sortable";
 import { DomTable } from "../collections/DomTable";
-import { TableCollection } from "../collections/TableCollection";
+import { TableColumnCollection } from "../collections/TableColumnCollection";
 import { Direction, SortingOptions } from "../options/SortingOptions";
 import { Table } from "./Table";
 import { TableLike } from "./TableLike";
@@ -35,7 +35,7 @@ export class TableSorter {
 
     private createAlgorithm(columnIndexToSort: number): Sortable {
         return this.algorithm === TableSorter.QUICK_SORT
-            ? new QuickSort(new TableCollection(this.table, columnIndexToSort))
+            ? new QuickSort(new TableColumnCollection(this.table, columnIndexToSort))
             : new Bubblesort(new DomTable(this.table, columnIndexToSort));
     }
 

@@ -3,7 +3,7 @@ import { Cell } from "../table/structure/Cell";
 import { TableLike } from "../table/TableLike";
 import { Collection } from "./Collection";
 
-export class TableCollection implements Collection<Comparable<any>> {
+export class TableColumnCollection implements Collection<Comparable<any>> {
 
     private table: TableLike;
     private columnIndex: number;
