@@ -27,4 +27,9 @@ describe("Mergesort", () => {
         const sorter = new QuickSort(unsorterArray);
         expect(sorter.sort(Direction.Ascending).getRaw()).to.be.deep.equal(sortedArray.getRaw());
     });
+
+    it("should return the index of the first item", () => {
+        const array = new Numbers([5]);
+        expect(array.getFirstRowIndex()).to.be.equals(0);
+    });
 });

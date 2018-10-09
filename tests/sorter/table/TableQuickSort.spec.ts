@@ -70,12 +70,12 @@ describe("HTML Table-Like optimized sorter With 1000 entries. Algorithms compari
 
                 ;
         }
-        console.time('sort');
         const table = new TableStructure(unsortedTableBuilder.build(), options);
-        const tableSorter = new QuickSort(new TableCollection(table, 1));
+        const collection = new TableCollection(table, 1);
+        const tableSorter = new QuickSort(collection);
         const result = tableSorter.sort(Direction.Ascending);
-        console.timeEnd('sort');
         expect(result.getRaw()).to.be.eqls(sortedTableBuilder.build().html());
+        expect(collection.getFirstRowIndex()).to.be.equals(0);
     });
 
 });

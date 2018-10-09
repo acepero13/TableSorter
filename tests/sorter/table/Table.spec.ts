@@ -5,7 +5,6 @@ import * as jquery from "jquery";
 import { JSDOM } from "jsdom";
 import { Direction, SortingOptions } from "../../../src/sorter/options/SortingOptions";
 import { Table } from "../../../src/sorter/table/Table";
-import { TableSorter } from "../../../src/sorter/table/TableSorter";
 import { createTable, createTableAsc, TableBuilder } from "../../utils/TableCreator";
 
 describe("Table", () => {
@@ -64,6 +63,7 @@ describe("Table", () => {
         const options = new SortingOptions(false);
         const table = new Table(unsortedTable, options);
         expect(() => table.getCell({ columnIndex: 1, rowIndex: 10 })).to.throw("Index out of bounds");
+        expect(options.getHeaderSelector()).to.be.equals("td");
     });
 });
 
@@ -122,7 +122,7 @@ describe("Get Data Attributes", () => {
 
         const table = new Table(unsortedTableBuilder.build(), options);
         expect(table.getCellAttribute({ columnIndex: 0, rowIndex: 2 }, "type")).to.be.equals("date");
-        expect(table.getCellAttribute({columnIndex: 0, rowIndex: 2}, "format")).to.be.equals(dataFlags.format);
+        expect(table.getCellAttribute({ columnIndex: 0, rowIndex: 2 }, "format")).to.be.equals(dataFlags.format);
     });
 
 });

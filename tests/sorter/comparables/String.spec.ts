@@ -1,8 +1,6 @@
 // tslint:disable-next-line:no-implicit-dependencies
 import { expect } from "chai";
-import { NumberComparable } from "../../../src/sorter/comparables/Number";
 import { StringComparable } from "../../../src/sorter/comparables/String";
-import { TableSorter } from "../../../src/sorter/table/TableSorter";
 
 describe("String comparable Equality", () => {
     it("should return true when two strings are equal", () => {
