@@ -5,4 +5,4 @@ node_js:
   - "iojs"
   - "7"
 after_script:
-  NODE_ENV=test nyc mocha --compilers ts:ts-node/register tests/**/*.spec.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  NODE_ENV=test nyc mocha tests/**/**/**/*.spec.ts && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
