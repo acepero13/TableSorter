@@ -6,7 +6,7 @@ import { Attributable } from "./Attributable";
 export class ColumnAttributeRetriever implements Attributable {
     private readonly table: TableLike;
     private readonly hasHeader: boolean;
-    private header: Header;
+    private readonly header: Header;
     public constructor(table: TableLike, hasHeader: boolean, header: Header) {
         this.table = table;
         this.hasHeader = hasHeader;

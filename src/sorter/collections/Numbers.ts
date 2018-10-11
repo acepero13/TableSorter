@@ -4,7 +4,7 @@ import { Collection } from "./Collection";
 
 export class Numbers implements Collection<Comparable<number>> {
 
-    private array: Comparable<number>[] = [];
+    private readonly array: Comparable<number>[] = [];
     public constructor(array: number[]) {
         array.forEach(element => {
             this.array.push(new NumberComparable(element));

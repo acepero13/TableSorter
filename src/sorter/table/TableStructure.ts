@@ -8,8 +8,8 @@ const $ = require("jquery")(window) as JQueryStatic;
 
 export class TableStructure extends AbstractTable {
 
-    private tableStructure: JQuery<Element>[][];
-    private rows: JQuery<Element>[];
+    private readonly tableStructure: JQuery<Element>[][];
+    private readonly rows: JQuery<Element>[];
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         super(table, options);
         this.tableStructure = [];

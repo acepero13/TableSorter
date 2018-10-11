@@ -5,9 +5,9 @@ import { Collection } from "./Collection";
 
 export class TableColumnCollection implements Collection<Comparable<any>> {
 
-    private table: TableLike;
-    private columnIndex: number;
-    private tableArray: Sort[];
+    private readonly table: TableLike;
+    private readonly columnIndex: number;
+    private readonly tableArray: Sort[];
 
     public constructor(table: TableLike, columnIndex: number) {
         this.table = table;

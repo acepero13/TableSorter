@@ -1,9 +1,9 @@
 import { SortingOptions } from "../../options/SortingOptions";
 
 export class Body {
-    private body: any = "";
-    private options: SortingOptions;
-    private table: JQuery<Element>;
+    private readonly body: any = "";
+    private readonly options: SortingOptions;
+    private readonly table: JQuery<Element>;
     private initialBodyRowIndex: number;
 
     public constructor(table: JQuery<Element>, options: SortingOptions) {

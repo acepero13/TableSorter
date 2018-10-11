@@ -7,7 +7,7 @@ import { Direction } from "../options/SortingOptions";
 import { Sortable } from "./Sortable";
 
 export class QuickSort implements Sortable {
-    private toSort: Collection<any>;
+    private readonly toSort: Collection<any>;
     private comparator!: Comparator<any>;
 
     public constructor(unsorted: Collection<any>) {
