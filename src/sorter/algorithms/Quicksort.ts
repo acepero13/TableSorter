@@ -36,17 +36,23 @@ export class QuickSort implements Sortable {
         }
     }
     private partition(low: number, high: number): any {
-        const pivot = this.toSort.get(high);
+        const pivotIndex = this.choosePivotIndex(low, high);
+        const pivot = this.toSort.get(pivotIndex);
+        this.toSort.swap(high, pivotIndex);
         const partitionIndex = this.computePartitionIndex(low, high, pivot);
-        this.toSort.swap(partitionIndex + 1, high);
-        return partitionIndex + 1;
+        this.toSort.swap(partitionIndex, high);
+        return partitionIndex;
     }
+    private choosePivotIndex(low: number, high: number): number {
+        return low + Math.floor(Math.random() * high) % (high - low + 1);
+    }
+
     private computePartitionIndex(low: number, high: number, pivot: Comparable<any>): number {
         let i = low - 1;
-        for (let j = low; j < high; j++) {
+        for (let j = low; j <= high; j++) {
             i = this.swapWhenNecessary(j, pivot, i);
         }
-        return i;
+        return i + 1;
     }
 
     private swapWhenNecessary(j: number, pivot: Comparable<any>, i: number): number {
