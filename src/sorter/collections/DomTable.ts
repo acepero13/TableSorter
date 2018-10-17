@@ -5,8 +5,8 @@ import { Collection } from "./Collection";
 
 export class DomTable implements Collection<Comparable<any>> {
 
-    private table: TableLike;
-    private columnIndex: number;
+    private readonly table: TableLike;
+    private readonly columnIndex: number;
 
     public constructor(table: TableLike, columnIndex: number) {
         this.table = table;
