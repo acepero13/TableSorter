@@ -2,9 +2,9 @@ import { SortingOptions } from "../../options/SortingOptions";
 
 export class Header {
 
-    private options: SortingOptions;
-    private header: DOMStringMap[] = [];
-    private table: JQuery<Element>;
+    private readonly options: SortingOptions;
+    private readonly header: DOMStringMap[] = [];
+    private readonly table: JQuery<Element>;
     public constructor(table: JQuery<Element>, options: SortingOptions) {
         this.options = options;
         this.table = table;

@@ -14,6 +14,13 @@ describe("Mergesort", () => {
         expect(sorter.sort(Direction.Ascending).getRaw()).to.be.deep.equal(sortedArray.getRaw());
     });
 
+    it("should sort an unsorted array in descending order", () => {
+        const unsorterArray = new Numbers([5, 3, 1, 8, 30, 21]);
+        const sortedArray = new Numbers([30, 21 , 8, 5, 3, 1]);
+        const sorter = new QuickSort(unsorterArray);
+        expect(sorter.sort(Direction.Descending).getRaw()).to.be.deep.equal(sortedArray.getRaw());
+    });
+
     it("should sort an unsorted array a bigger array sorted", () => {
         const unsorterArray = new Numbers([5, 3, 1, 8, 30, 21, 100, 23, 2, 2, 99, 1000]);
         const sortedArray = new Numbers([1, 2, 2, 3, 5, 8, 21, 23, 30, 99, 100, 1000]);

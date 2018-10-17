@@ -18,7 +18,7 @@ export function createTable(container: string = "<table>",
     return table.build();
 }
 
-function createHeaderIfNecessary(table: TableBuilder, header: boolean, rowSelector: string, colSelector: string) {
+function createHeaderIfNecessary(table: TableBuilder, header: boolean, rowSelector: string, colSelector: string): void {
     if (header) {
         table
             .createRow(rowSelector)
@@ -80,7 +80,7 @@ export class TableBuilder {
         return this;
     }
 
-    private addData(extraData: { [key: string]: string; }, column: JQuery<HTMLElement>) {
+    private addData(extraData: { [key: string]: string; }, column: JQuery<HTMLElement>): void {
         // tslint:disable-next-line:forin
         for (const key in extraData) {
             const value = extraData[key];
