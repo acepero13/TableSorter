@@ -17,7 +17,7 @@ export class TableStructure extends AbstractTable {
         this.prepareTableStructure();
     }
 
-    private prepareTableStructure(): any {
+    private prepareTableStructure(): void {
         this.getTable().find(this.getOptions().getRowSelector()).each((rowIndex: number, row: Element) => {
             this.tableStructure[rowIndex] = [];
             this.rows.push($(row));
